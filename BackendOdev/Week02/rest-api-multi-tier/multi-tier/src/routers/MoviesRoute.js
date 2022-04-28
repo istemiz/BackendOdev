@@ -18,9 +18,12 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  const id = Number(req.params.id);
+  // params
+  const personId = req.params.id;
   const movies = req.body;
-  const updatedMovies = moviesService.updateMovies(id, movies);
+  // business Logic
+  const updatedMovies = moviesService.updateMovies(personId, movies);
+  // return result
   res.status(200).send(updatedMovies);
 });
 
