@@ -1,9 +1,10 @@
 import Table from "react-bootstrap/Table";
 
-const RentList = (props) => {
+const MovieList = (props) => {
   console.log(props.movieList);
   const userNewList = props.movieList.map((movie, index) => (
     <tr key={index}>
+      <td>{movie.id}</td>
       <td>{movie.name}</td>
       <td>{movie.year}</td>
       <td>{movie.genre}</td>
@@ -25,4 +26,4 @@ const RentList = (props) => {
     </Table>
   );
 };
-export default RentList;
+export default MovieList;

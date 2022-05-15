@@ -1,24 +1,22 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import moviesRoute from "./routers/MoviesRoute.js";
-import data from "./data/data.js"; // assert{type: "json"} json dosyalarının tanınması için kullanılır.
+import moviesRoute from "./routes/MoviesRoute.js";
 
-const server = express();
-const PORT = 5001;
+const app = express();
+const port = 3001;
 
-// parse serverlication/x-www-form-urlencoded
-server.use(bodyParser.urlencoded({ extended: false }));
-server.use(bodyParser.json());
-server.use(cors());
+// cors
+app.use(cors());
 
-// parse serverlication/json
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
 
-server.use("/movies", moviesRoute);
+// parse application/json
+app.use(bodyParser.json());
 
-server.listen(PORT, () => {
-  console.log(`Server ${PORT} portunda çalışıyor.`);
-  console.log(data);
+app.use("/movies", moviesRoute);
+
+app.listen(port, () => {
+  console.log(`Example app listening on port port`);
 });
-
-export default server;
